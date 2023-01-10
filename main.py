@@ -4,7 +4,7 @@
 # Функция test_1 в коде ниже также должна отработать без ошибок.
 
 import os
-from datetime import datetime, date, time
+from datetime import datetime
 
 def logger(old_function):
 
