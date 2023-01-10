@@ -3,15 +3,24 @@
 # имя функции, аргументы, с которыми вызвалась и возвращаемое значение.
 # Функция test_1 в коде ниже также должна отработать без ошибок.
 
-
 import os
-
+from datetime import datetime, date, time
 
 def logger(old_function):
-    ...
 
     def new_function(*args, **kwargs):
-        ...
+        log = []
+        t = datetime.now().strftime("%d/%m/%y %H:%M:%S")
+        value = old_function(*args, **kwargs)
+        log.append(t)
+        log.append(old_function)
+        log.append(args)
+        log.append(kwargs)
+        log.append(value)
+        print(log)
+        with open('main.log', 'a+') as file:
+            file.write(f'{str(log)}\n')
+        return value
 
     return new_function
 
